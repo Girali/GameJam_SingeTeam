@@ -11,7 +11,7 @@ public class GUI_Controller : MonoBehaviour
         get
         {
             if (_instance == null)
-                _instance = FindObjectOfType<GUI_Controller>();
+                _instance = FindObjectOfType<GUI_Controller>(); 
             return _instance;
         }
     }
