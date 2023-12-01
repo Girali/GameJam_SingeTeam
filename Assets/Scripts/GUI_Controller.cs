@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class GUI_Controller : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private static GUI_Controller _instance;
 
-    // Update is called once per frame
-    void Update()
+    public static GUI_Controller Instance
     {
-        
+        get
+        {
+            if (_instance == null)
+                _instance = FindObjectOfType<GUI_Controller>();
+            return _instance;
+        }
     }
 }
