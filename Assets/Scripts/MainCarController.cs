@@ -13,8 +13,20 @@ public class MainCarController : MonoBehaviour
     
     private void Update()
     {
-        transform.Translate(Vector3.forward * (_speed * Time.deltaTime));
-        transform.Rotate(Vector3.up, Yaw * _rotationSpeed * Time.deltaTime);
+        if (Input.GetKey(KeyCode.Z))
+        {
+            _rigidbody.MovePosition(transform.position + (transform.forward * (_speed * Time.deltaTime)));
+        }
+        
+        if (_canPlay)
+        {
+            _rigidbody.MoveRotation(transform.rotation * Quaternion.Euler(0f, Yaw * _rotationSpeed * Time.deltaTime, 0f));
+        }
+    }
+
+    private void Awake()
+    {
+        _rigidbody = GetComponent<Rigidbody>();
     }
 
     private IEnumerator lockControl()
@@ -27,6 +39,8 @@ public class MainCarController : MonoBehaviour
     public float Yaw { get; set; } = 0f;
 
     // Private fields
-    private float _speed = 10f;
-    private readonly float _rotationSpeed = 90f;
+    private Rigidbody _rigidbody;
+    private float _speed = 50f;
+    private readonly float _rotationSpeed = 270f;
+    private bool _canPlay;
 }
