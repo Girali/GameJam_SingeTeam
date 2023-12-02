@@ -7,11 +7,10 @@ public class Lootable : MonoBehaviour
     {
         if (other == playerCarCollider)
         {
-            gameController.AddLoot();
+            GameController.Instance.AddLoot();
         }
     }
 
     // Private fields
-    [SerializeField] private GameController gameController;
     [SerializeField] private BoxCollider playerCarCollider;
 }
