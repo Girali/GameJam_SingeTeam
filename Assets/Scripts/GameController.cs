@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -25,8 +26,13 @@ public class GameController : MonoBehaviour
     public void AddLoot()
     {
         _score += 100;
+        if (_scoreText)
+        {
+            _scoreText.text = "$" + _score;
+        }
     }
     
     // Private fields
     [SerializeField] private uint _score = 0;
+    [SerializeField] private Text _scoreText;
 }
