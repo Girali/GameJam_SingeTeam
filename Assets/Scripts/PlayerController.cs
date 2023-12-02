@@ -18,16 +18,27 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector3 camPosBOundry = new Vector3(0.2f, 0.1f, 0);
 
     private GunController gunController;
+    private CarController carController;
     
     private Vector3 camInitialPos;
     private Vector3 initialPosition;
     private Vector3 targetPos = Vector3.zero;
     
-    private void Start()
+    private void Awake()
     {
+        gunController = GetComponent<GunController>();
+        SetCar(FindObjectOfType<CarController>());
+        GameController.Instance.SetLockCursor(true);
+    }
+
+    public void SetCar(CarController car)
+    {
+        carController = car;
+
+        transform.position = carController.PlayerPos.position;
+        transform.parent = carController.PlayerPos;
         initialPosition = targetPosition.transform.localPosition;
         camInitialPos = cam.transform.localPosition;
-        gunController = GetComponent<GunController>();
     }
 
     private void Update()
@@ -52,7 +63,7 @@ public class PlayerController : MonoBehaviour
         float tX = targetPos.x / viewBoundry.x;
         float tY = targetPos.y / viewBoundry.y;
         
-        float pitch = Mathf.Lerp(-rotationBoundry.x, rotationBoundry.x, (tY + 1) / 2f );
+        float pitch = Mathf.Lerp(rotationBoundry.x, -rotationBoundry.x, (tY + 1) / 2f );
         float yaw = Mathf.Lerp(-rotationBoundry.y, rotationBoundry.y, (tX + 1) / 2f);
         
         float offsetX = Mathf.Lerp(-camPosBOundry.x, camPosBOundry.x, (tX + 1) / 2f );

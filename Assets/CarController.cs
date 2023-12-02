@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
@@ -12,6 +13,18 @@ public class CarController : MonoBehaviour
     [SerializeField, MinMaxSlider(-360, 360)]
     private Vector2 tiltLimit;
 
+    [SerializeField] private Animator _animator;
+    [SerializeField] private Transform playerPos;
+
+    public Transform PlayerPos
+    {
+        get => playerPos;
+    }
+    
+    private void Awake()
+    {
+        _animator = GetComponent<Animator>();
+    }
 
     public void UpdateCarTilt(float x, float y, float z)
     {
@@ -24,9 +37,11 @@ public class CarController : MonoBehaviour
 
     private void Turn90Left()
     {
+        _animator.SetTrigger("Left");
     }
     
     private void Turn90Right()
     {
+        _animator.SetTrigger("Right");
     }
 }

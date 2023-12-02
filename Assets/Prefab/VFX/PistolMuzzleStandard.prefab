@@ -14863,7 +14863,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 9204929a3e230c947a9b4dd4f511e0a1, type: 3}
   - {fileID: 8300000, guid: 9fc7b2fd611c186459059ee5487a485e, type: 3}
   pitch: {x: 0.853202, y: 1.1073892}
-  volume: {x: 0.835468, y: 1.0778325}
+  volume: {x: 0.28485006, y: 0.3846736}
 --- !u!1 &1277339398503402545
 GameObject:
   m_ObjectHideFlags: 0

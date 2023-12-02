@@ -15,4 +15,10 @@ public class GameController : MonoBehaviour
             return _instance;
         }
     }
+
+    public void SetLockCursor(bool b)
+    {
+        Cursor.lockState = b ? CursorLockMode.Locked : CursorLockMode.None;
+        Cursor.visible = !b;
+    }
 }
