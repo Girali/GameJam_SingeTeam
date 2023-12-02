@@ -20,6 +20,7 @@ public class MainCarController : MonoBehaviour
     [SerializeField, MinMaxSlider(-40,40)] private Vector2 steeringLimit = new Vector2(-10, 10);
     
     public float Yaw { get; set; } = 0f;
+    public CarRagdoll carRagdoll;
 
     private void Start()
     {
@@ -59,6 +60,17 @@ public class MainCarController : MonoBehaviour
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
+    }
+    
+    private void OnCollisionEnter(Collision other)
+    {
+        if (other.gameObject.CompareTag("Environment"))
+        {
+            if (rb.velocity.magnitude > 3f)
+            {
+                carRagdoll.ActivateRagdoll();
+            }
+        }
     }
 
     private IEnumerator lockControl()

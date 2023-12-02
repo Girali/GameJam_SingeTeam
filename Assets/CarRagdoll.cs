@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Sirenix.OdinInspector;
@@ -5,17 +6,45 @@ using UnityEngine;
 
 public class CarRagdoll : MonoBehaviour
 {
-    [SerializeField] private Collider[] _colliders;
+    private List<Collider> _colliders;
+    private GameObject _player;
     
+    public void Start()
+    {
+        _colliders = FindObjectsCollidersByTag("CarParts");
+        _player = GameObject.FindGameObjectWithTag("Player");
+    }
+
     public void ActivateRagdoll()
     {
-        foreach (var c in _colliders)
+        _player.GetComponent<SphereCollider>().isTrigger = false;
+        _player.AddComponent<Rigidbody>();
+        
+        foreach (var collider in _colliders)
         {
-            if (c != null)
+            if (collider != null)
             {
-                c.gameObject.AddComponent<Rigidbody>();
-                c.transform.parent = null;
+                collider.gameObject.AddComponent<Rigidbody>();
+                collider.transform.parent = null;
             }
         }
+    }
+    
+    private List<Collider> FindObjectsCollidersByTag(string tag)
+    {
+        List<Collider> colliders = new List<Collider>();
+
+        GameObject[] objectsWithTag = GameObject.FindGameObjectsWithTag(tag);
+
+        foreach (GameObject obj in objectsWithTag)
+        {
+            Collider collider = obj.GetComponent<Collider>();
+            if (collider != null)
+            {
+                colliders.Add(collider);
+            }
+        }
+
+        return colliders;
     }
 }
