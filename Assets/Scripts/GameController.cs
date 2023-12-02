@@ -21,4 +21,12 @@ public class GameController : MonoBehaviour
         Cursor.lockState = b ? CursorLockMode.Locked : CursorLockMode.None;
         Cursor.visible = !b;
     }
+    
+    public void AddLoot()
+    {
+        _score += 100;
+    }
+    
+    // Private fields
+    [SerializeField] private uint _score = 0;
 }
