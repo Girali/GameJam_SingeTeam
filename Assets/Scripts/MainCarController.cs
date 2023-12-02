@@ -5,10 +5,22 @@ using UnityEngine;
 
 public class MainCarController : MonoBehaviour
 {
-    void Update()
+    private void Start()
+    {
+        _canPlay = false;
+        StartCoroutine(lockControl());
+    }
+    
+    private void Update()
     {
         transform.Translate(Vector3.forward * (_speed * Time.deltaTime));
         transform.Rotate(Vector3.up, Yaw * _rotationSpeed * Time.deltaTime);
+    }
+
+    private IEnumerator lockControl()
+    {
+        yield return new WaitForSeconds(2f);
+        _canPlay = true;
     }
 
     // Public fields
