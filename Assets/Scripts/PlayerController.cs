@@ -23,9 +23,11 @@ public class PlayerController : MonoBehaviour
     private Vector3 camInitialPos;
     private Vector3 initialPosition;
     private Vector3 targetPos = Vector3.zero;
-    
+    private int layerMask;
+
     private void Awake()
     {
+        layerMask = LayerMask.GetMask("Default");
         gunController = GetComponent<GunController>();
         SetCar(FindObjectOfType<CarController>());
         GameController.Instance.SetLockCursor(true);
@@ -69,7 +71,21 @@ public class PlayerController : MonoBehaviour
         float offsetX = Mathf.Lerp(-camPosBOundry.x, camPosBOundry.x, (tX + 1) / 2f );
         float offsetY = Mathf.Lerp(-camPosBOundry.y, camPosBOundry.y, (tY + 1) / 2f);
         
-        visuals.transform.localRotation = Quaternion.LookRotation(targetPosition.transform.localPosition - cam.transform.localPosition);
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        Quaternion newRot = Quaternion.identity;
+        
+        if (Physics.Raycast(ray, out hit, 100f, layerMask))
+        {
+            newRot = Quaternion.LookRotation(hit.point - visuals.transform.position);
+        }
+        else
+        {
+            newRot = Quaternion.LookRotation(targetPosition.transform.localPosition - cam.transform.localPosition);
+        }
+
+        visuals.transform.localRotation = Quaternion.Lerp(visuals.transform.localRotation, newRot, 0.02f);
         cam.transform.localRotation = Quaternion.Lerp(cam.transform.localRotation, Quaternion.Euler(pitch, yaw,0), camRotLerpSpeed);
         cam.transform.localPosition = Vector3.Lerp(cam.transform.localPosition, camInitialPos + new Vector3(offsetX, offsetY, 0), camPosLerpSpeed);
     }
