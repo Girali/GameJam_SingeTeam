@@ -88,6 +88,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5778953811515054725}
+  - component: {fileID: 720736977048580505}
   m_Layer: 0
   m_Name: GlobalPacket
   m_TagString: Untagged
@@ -113,6 +114,31 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &720736977048580505
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4411797833353857186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 411dcac04aff248c4b98f1feb5595fb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_onFinish:
+    m_PersistentCalls:
+      m_Calls: []
+  playType: 0
+  animationStartTime: 0
+  animationTime: 1
+  enablePlay: 0
+  awakePlay: 1
+  lgnoreTimeScale: 1
+  randomStartValue: 0
+  startValue: 0
+  _timelineEvents: []
+  tweens: []
 --- !u!1 &6689724868264166482
 GameObject:
   m_ObjectHideFlags: 0
@@ -346,6 +372,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3850955342214930113, guid: aade22bcc43be0f4d84d0161d5b5986e, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.0024508452
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850955342214930113, guid: aade22bcc43be0f4d84d0161d5b5986e, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 1.4258205
+      objectReference: {fileID: 0}
+    - target: {fileID: 3850955342214930113, guid: aade22bcc43be0f4d84d0161d5b5986e, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.35709548
+      objectReference: {fileID: 0}
     - target: {fileID: 3960444384323630687, guid: aade22bcc43be0f4d84d0161d5b5986e, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -389,6 +427,18 @@ PrefabInstance:
     - target: {fileID: 3960444384323630687, guid: aade22bcc43be0f4d84d0161d5b5986e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4978636732228919584, guid: aade22bcc43be0f4d84d0161d5b5986e, type: 3}
+      propertyPath: m_ConnectedAnchor.x
+      value: -0.0024508452
+      objectReference: {fileID: 0}
+    - target: {fileID: 4978636732228919584, guid: aade22bcc43be0f4d84d0161d5b5986e, type: 3}
+      propertyPath: m_ConnectedAnchor.y
+      value: 1.4302849
+      objectReference: {fileID: 0}
+    - target: {fileID: 4978636732228919584, guid: aade22bcc43be0f4d84d0161d5b5986e, type: 3}
+      propertyPath: m_ConnectedAnchor.z
+      value: 0.35709548
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aade22bcc43be0f4d84d0161d5b5986e, type: 3}

@@ -17,6 +17,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Vector3 rotationBoundry = new Vector3(10, 40, 0);
     [SerializeField] private Vector3 camPosBOundry = new Vector3(0.2f, 0.1f, 0);
 
+    private GunController gunController;
+    
     private Vector3 camInitialPos;
     private Vector3 initialPosition;
     private Vector3 targetPos = Vector3.zero;
@@ -25,10 +27,16 @@ public class PlayerController : MonoBehaviour
     {
         initialPosition = targetPosition.transform.localPosition;
         camInitialPos = cam.transform.localPosition;
+        gunController = GetComponent<GunController>();
     }
 
     private void Update()
     {
+        if (Input.GetMouseButtonDown(0))
+        {
+            gunController.Shot();
+        }
+        
         float x = Input.GetAxis("Mouse X");
         float y = Input.GetAxis("Mouse Y");
 
@@ -49,8 +57,6 @@ public class PlayerController : MonoBehaviour
         
         float offsetX = Mathf.Lerp(-camPosBOundry.x, camPosBOundry.x, (tX + 1) / 2f );
         float offsetY = Mathf.Lerp(-camPosBOundry.y, camPosBOundry.y, (tY + 1) / 2f);
-        
-        Debug.LogError(tX + " " + tY + "  "+ pitch +"  " + yaw);
         
         visuals.transform.localRotation = Quaternion.LookRotation(targetPosition.transform.localPosition - cam.transform.localPosition);
         cam.transform.localRotation = Quaternion.Lerp(cam.transform.localRotation, Quaternion.Euler(pitch, yaw,0), camRotLerpSpeed);
