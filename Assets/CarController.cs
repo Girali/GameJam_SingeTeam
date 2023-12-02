@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class CarController : MonoBehaviour
 {
+    [SerializeField] public MainCarController mainCarController;
+    
     [SerializeField, MinMaxSlider(-360, 360)]
     private Vector2 yawLimit;
     [SerializeField, MinMaxSlider(-360, 360)]

@@ -65,6 +65,11 @@ public class PlayerController : MonoBehaviour
         float tX = targetPos.x / viewBoundry.x;
         float tY = targetPos.y / viewBoundry.y;
         
+        if (carController && carController.mainCarController)
+        {
+            carController.mainCarController.Yaw = tX;
+        }
+        
         float pitch = Mathf.Lerp(rotationBoundry.x, -rotationBoundry.x, (tY + 1) / 2f );
         float yaw = Mathf.Lerp(-rotationBoundry.y, rotationBoundry.y, (tX + 1) / 2f);
         
