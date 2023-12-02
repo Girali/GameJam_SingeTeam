@@ -19,6 +19,8 @@ public class CarController : MonoBehaviour
     [SerializeField] private Transform playerPos;
     [SerializeField] private Transform carRender;
 
+    [SerializeField] private GameObject steeringWheel;
+    private Vector3 rotAngle;
     public Transform PlayerPos
     {
         get => playerPos;
@@ -27,12 +29,14 @@ public class CarController : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        rotAngle = steeringWheel.transform.right;
     }
 
     public void Update(float x)
     {
         float t = (x + 1) / 2f;
         //UpdateCarTilt(t, t, 0);
+        steeringWheel.transform.Rotate(-rotAngle,x);
     }
 
     public void UpdateCarTilt(float x, float y, float z)
