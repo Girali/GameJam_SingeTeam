@@ -37,7 +37,7 @@ public class Lootable : MonoBehaviour
             
             if (lootVFX)
             {
-                vfx = Instantiate(lootVFX, transform.position + Vector3.up, lootVFX.transform.rotation);
+                vfx = Instantiate(lootVFX, transform.position + (Vector3.up * 5f), lootVFX.transform.rotation);
             }
             
             GameController.Instance.AddLoot();

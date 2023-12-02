@@ -8,10 +8,11 @@ public class BreakOnShot : Shotable
     [SerializeField] private GameObject prefab;
     [SerializeField] private GameObject impactPrefab;
     
-    public override void Shoted(Vector3 pos, Vector3 normal)
+    public override bool Shoted(Vector3 pos, Vector3 normal)
     {
         GameObject.Instantiate(prefab, pos, Quaternion.identity);
         GameObject.Instantiate(prefab, pos, Quaternion.LookRotation(normal));
         Destroy(gameObject);
+        return true;
     }
 }

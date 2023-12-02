@@ -75,8 +75,8 @@ public class PlayerController : MonoBehaviour
         
         float offsetX = Mathf.Lerp(-camPosBOundry.x, camPosBOundry.x, (tX + 1) / 2f );
         float offsetY = Mathf.Lerp(-camPosBOundry.y, camPosBOundry.y, (tY + 1) / 2f);
-        
-        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
+
+        Ray ray = new Ray(cam.transform.position, cam.transform.forward);
         RaycastHit hit;
 
         Quaternion newRot = Quaternion.identity;
@@ -84,13 +84,19 @@ public class PlayerController : MonoBehaviour
         if (Physics.Raycast(ray, out hit, 100f, layerMask))
         {
             newRot = Quaternion.LookRotation(hit.point - visuals.transform.position);
+            Debug.DrawLine(hit.point , ray.origin , Color.green);
+            
+            Debug.DrawRay(visuals.transform.position, visuals.transform.position - hit.point);
         }
         else
         {
             newRot = Quaternion.LookRotation(targetPosition.transform.localPosition - cam.transform.localPosition);
         }
 
-        visuals.transform.localRotation = Quaternion.Lerp(visuals.transform.localRotation, newRot, 0.02f);
+        if(carController)
+            carController.Update(tX);
+        
+        visuals.transform.rotation = Quaternion.Lerp(visuals.transform.rotation, newRot, 0.02f);
         cam.transform.localRotation = Quaternion.Lerp(cam.transform.localRotation, Quaternion.Euler(pitch, yaw,0), camRotLerpSpeed);
         cam.transform.localPosition = Vector3.Lerp(cam.transform.localPosition, camInitialPos + new Vector3(offsetX, offsetY, 0), camPosLerpSpeed);
     }

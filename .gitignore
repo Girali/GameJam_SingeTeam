@@ -79,3 +79,6 @@ crashlytics-build.properties
 
 *.blend2
 *.blend2.meta
+
+Assets/Scenes/Ville.unity
+Assets/Scenes/Ville.unity.meta

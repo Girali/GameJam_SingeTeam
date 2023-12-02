@@ -8,15 +8,16 @@ public class CarController : MonoBehaviour
 {
     [SerializeField] public MainCarController mainCarController;
     
-    [SerializeField, MinMaxSlider(-360, 360)]
+    [SerializeField, MinMaxSlider(-90, 90)]
     private Vector2 yawLimit;
-    [SerializeField, MinMaxSlider(-360, 360)]
+    [SerializeField, MinMaxSlider(-90, 90)]
     private Vector2 pitchLimit;
-    [SerializeField, MinMaxSlider(-360, 360)]
+    [SerializeField, MinMaxSlider(-90, 90)]
     private Vector2 tiltLimit;
 
     [SerializeField] private Animator _animator;
     [SerializeField] private Transform playerPos;
+    [SerializeField] private Transform carRender;
 
     public Transform PlayerPos
     {
@@ -28,13 +29,19 @@ public class CarController : MonoBehaviour
         _animator = GetComponent<Animator>();
     }
 
+    public void Update(float x)
+    {
+        float t = (x + 1) / 2f;
+        //UpdateCarTilt(t, t, 0);
+    }
+
     public void UpdateCarTilt(float x, float y, float z)
     {
         float yaw = Mathf.Lerp(yawLimit.x, yawLimit.y, y);
-        float pitch = Mathf.Lerp(pitchLimit.x, pitchLimit.y, x);
-        float tilit = Mathf.Lerp(tiltLimit.x, tiltLimit.y, z);
+        float pitch = Mathf.Lerp(pitchLimit.x, pitchLimit.y, z);
+        float tilit = Mathf.Lerp(tiltLimit.y, tiltLimit.x, x);
 
-        transform.localRotation = Quaternion.Euler(pitch, yaw, tilit);
+        carRender.localRotation = Quaternion.Euler(pitch, yaw, tilit);
     }
 
     private void Turn90Left()

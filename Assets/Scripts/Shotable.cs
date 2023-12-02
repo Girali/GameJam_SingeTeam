@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class Shotable : MonoBehaviour
 {
-    public virtual void Shoted(Vector3 pos, Vector3 normal)
+    public virtual bool Shoted(Vector3 pos, Vector3 normal)
     {
-        
+        return false;
     }
 }

@@ -13,14 +13,13 @@ public class MainCarController : MonoBehaviour
     
     private void Update()
     {
-        if (Input.GetKey(KeyCode.Z))
+        if (Input.GetKey(KeyCode.Space))
         {
             _rigidbody.MovePosition(transform.position + (transform.forward * (_speed * Time.deltaTime)));
-        }
-        
-        if (_canPlay)
-        {
-            _rigidbody.MoveRotation(transform.rotation * Quaternion.Euler(0f, Yaw * _rotationSpeed * Time.deltaTime, 0f));
+            if (_canPlay)
+            {
+                _rigidbody.MoveRotation(transform.rotation * Quaternion.Euler(0f, Yaw * _rotationSpeed * Time.deltaTime, 0f));
+            }
         }
     }
 

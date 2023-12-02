@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 3960444384323630687}
   - component: {fileID: 3549574173906754013}
   - component: {fileID: 2716910813255605347}
+  - component: {fileID: 1250689810}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -73,7 +74,21 @@ MonoBehaviour:
   cam: {fileID: 4309678439499118992}
   muzzleFlash: {fileID: 7865876049721985450}
   muzzleFlashPrefab: {fileID: 1277314995582460547, guid: a1af3095c408ed84c8e5fb46dde0af6d, type: 3}
+  defaultImpact: {fileID: 1776954259925760, guid: 2030e0eb33dfc224b9bcbe4ee0fa1a1e, type: 3}
   animator: {fileID: 5636160284094165812}
+--- !u!135 &1250689810
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 386705732422877549}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &2210603658816901028
 GameObject:
   m_ObjectHideFlags: 0

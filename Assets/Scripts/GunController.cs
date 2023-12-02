@@ -10,6 +10,7 @@ public class GunController : MonoBehaviour
     
     [SerializeField] private GameObject muzzleFlash;
     [SerializeField] private GameObject muzzleFlashPrefab;
+    [SerializeField] private GameObject defaultImpact;
     [SerializeField] private Animator animator;
 
     private int layerMask;
@@ -32,7 +33,13 @@ public class GunController : MonoBehaviour
             Shotable shotable =  hit.collider.GetComponent<Shotable>();
             if (shotable != null)
             {
-                shotable.Shoted(hit.point, hit.normal);
+                bool b = shotable.Shoted(hit.point, hit.normal);
+                if (!b)
+                    GameObject.Instantiate(defaultImpact, hit.point, Quaternion.LookRotation(hit.normal));
+            }
+            else
+            {
+                GameObject.Instantiate(defaultImpact, hit.point, Quaternion.LookRotation(hit.normal));
             }
         }
     }
