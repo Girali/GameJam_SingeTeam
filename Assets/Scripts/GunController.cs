@@ -22,14 +22,14 @@ public class GunController : MonoBehaviour
     public void Shot()
     {
         animator.SetTrigger("Shot");
-        GameObject.Instantiate(muzzleFlashPrefab, muzzleFlash.transform.position, muzzleFlash.transform.rotation);
+        GameObject.Instantiate(muzzleFlashPrefab, muzzleFlash.transform.position, muzzleFlash.transform.rotation,muzzleFlash.transform);
         
-        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Ray ray = cam.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
         
         if(Physics.Raycast(ray, out hit, 100f, layerMask))
         {
-            Shotable shotable =  hit.transform.GetComponent<Shotable>();
+            Shotable shotable =  hit.collider.GetComponent<Shotable>();
             if (shotable != null)
             {
                 shotable.Shoted(hit.point, hit.normal);

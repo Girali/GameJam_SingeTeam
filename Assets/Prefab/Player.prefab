@@ -70,7 +70,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4123ed901f2f83640b781570ab3f0c7d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cam: {fileID: 0}
+  cam: {fileID: 4309678439499118992}
   muzzleFlash: {fileID: 7865876049721985450}
   muzzleFlashPrefab: {fileID: 1277314995582460547, guid: a1af3095c408ed84c8e5fb46dde0af6d, type: 3}
   animator: {fileID: 5636160284094165812}
