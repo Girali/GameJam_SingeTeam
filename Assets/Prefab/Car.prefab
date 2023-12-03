@@ -172,6 +172,30 @@ PrefabInstance:
       propertyPath: m_Name
       value: CarRender
       objectReference: {fileID: 0}
+    - target: {fileID: 9173564839966239886, guid: 87df60be7ff73284283aeb9f1bc620fa, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.997
+      objectReference: {fileID: 0}
+    - target: {fileID: 9173564839966239886, guid: 87df60be7ff73284283aeb9f1bc620fa, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.592
+      objectReference: {fileID: 0}
+    - target: {fileID: 9173564839966239886, guid: 87df60be7ff73284283aeb9f1bc620fa, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2.599
+      objectReference: {fileID: 0}
+    - target: {fileID: 9173564839966239886, guid: 87df60be7ff73284283aeb9f1bc620fa, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.8583669
+      objectReference: {fileID: 0}
+    - target: {fileID: 9173564839966239886, guid: 87df60be7ff73284283aeb9f1bc620fa, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.5130365
+      objectReference: {fileID: 0}
+    - target: {fileID: 9173564839966239886, guid: 87df60be7ff73284283aeb9f1bc620fa, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 298.267
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 87df60be7ff73284283aeb9f1bc620fa, type: 3}
 --- !u!4 &6315387450716300662 stripped

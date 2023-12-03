@@ -25,8 +25,6 @@ namespace Monkeys
         // Start is called before the first frame update
         void Start()
         {
-
-
             if (anim is null)
             {
                 return;
@@ -37,13 +35,13 @@ namespace Monkeys
 
         IEnumerator Randomise()
         {
+            anim.SetTrigger("Enter");
+
             while (true)
             {
                 yield return new WaitForSeconds(Mathf.Max(0, Random.Range(MinDelay, MaxDelay)));
-                
                 anim.SetInteger(RandomIndexName ,Random.Range(0,MaxIndex + 1));
                 anim.SetTrigger(RandomTrigger);
-                
             }
         }
     }
