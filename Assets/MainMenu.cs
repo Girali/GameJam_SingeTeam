@@ -36,7 +36,8 @@ public class MainMenu : MonoBehaviour
 
     void LoadScene()
     {
-        SceneManager.LoadScene("Tutorial");
+        string s = PlayerPrefs.GetString("LastPlayed","Tutorial");
+        SceneManager.LoadScene(s);
     }
 
     [SerializeField] private UnityEngine.UI.Slider volumeSlider;

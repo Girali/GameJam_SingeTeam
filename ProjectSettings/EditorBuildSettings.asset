@@ -12,6 +12,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Tutorial.unity
     guid: aa44f082db8898941b50e311003ac898
   - enabled: 1
+    path: Assets/Scenes/Ville.unity
+    guid: e00f8004db5c453479f8961009ae4f63
+  - enabled: 1
     path: Assets/Scenes/LoseMenu.unity
     guid: a303df9597b6c074f8715cffadb7dbf2
   - enabled: 1

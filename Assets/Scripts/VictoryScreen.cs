@@ -24,6 +24,8 @@ public class VictoryScreen : MonoBehaviour
 
     void LoadVictoryScene()
     {
+        string s = SceneManager.GetActiveScene().name;
+        PlayerPrefs.SetString("LastPlayed", s);
         SceneManager.LoadScene("WinMenu");
     }
 }
