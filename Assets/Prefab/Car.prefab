@@ -48,10 +48,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   acceleration: 0.01
   _speed: 15
-  _rotationSpeed: 270
+  _rotationSpeed: 120
   left: {fileID: 2164708838630897952}
   right: {fileID: 2164708838438435138}
-  steeringLimit: {x: -25.437237, y: 25.722786}
+  steeringLimit: {x: -12.462525, y: 12.162743}
   carRagdoll: {fileID: 970620267}
 --- !u!54 &1959726003
 Rigidbody:

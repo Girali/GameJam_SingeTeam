@@ -33,7 +33,7 @@ public class MainCarController : MonoBehaviour
     private float gravityFrame = 0;
     private float gravity = 0;
     
-    private void Update()
+    private void FixedUpdate()
     {
         Vector3 v = Vector3.zero;
 
@@ -42,7 +42,7 @@ public class MainCarController : MonoBehaviour
             v = Vector3.Scale(transform.forward, new Vector3(1,0,1)) * _speed;
             if (_canPlay)
             {
-                rb.MoveRotation(transform.rotation * Quaternion.Euler(0f, Yaw * _rotationSpeed * Time.deltaTime, 0f));
+                rb.MoveRotation(transform.rotation * Quaternion.Euler(0f, Yaw * _rotationSpeed * Time.fixedDeltaTime, 0f));
                 right.steerAngle = Mathf.Lerp(steeringLimit.x, steeringLimit.y, (1 + Yaw) / 2f);
                 left.steerAngle = Mathf.Lerp(steeringLimit.x, steeringLimit.y, (1 + Yaw) / 2f);
             }
