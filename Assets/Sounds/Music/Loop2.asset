@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ef893e62c33aa54dad82f72af285a73, type: 3}
+  m_Name: Loop2
+  m_EditorClassIdentifier: 
+  clips:
+  - {fileID: 8300000, guid: 90b39967f54abbc4ab3bd5876b88dbf0, type: 3}
+  - {fileID: 8300000, guid: 8622683cf54d9cc45a3aff5d55296a7d, type: 3}
