@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
         }
 
         if(carController)
-            carController.Update(tX);
+            carController.Updatebaba(tX);
         
         visuals.transform.rotation = Quaternion.Lerp(visuals.transform.rotation, newRot, 0.02f);
         cam.transform.localRotation = Quaternion.Lerp(cam.transform.localRotation, Quaternion.Euler(pitch, yaw,0), camRotLerpSpeed);
