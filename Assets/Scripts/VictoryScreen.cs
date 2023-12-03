@@ -24,6 +24,6 @@ public class VictoryScreen : MonoBehaviour
 
     void LoadVictoryScene()
     {
-        SceneManager.LoadScene("VictoryMenu");
+        SceneManager.LoadScene("WinMenu");
     }
 }
