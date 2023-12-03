@@ -52,6 +52,7 @@ public class GameController : MonoBehaviour
         }
         
         GUI_Controller.Instance.stars.UpdateView(pointsDone);
+        PlayerPrefs.SetFloat("Score", _score);
     }
 
     private int pointsDone = 0;
