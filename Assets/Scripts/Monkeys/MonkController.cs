@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MonkController : MonoBehaviour
 {
@@ -8,6 +9,10 @@ public class MonkController : MonoBehaviour
     [SerializeField] private Vector3 MonkStartRot = Vector3.zero;
     [SerializeField] private Vector3 MonkWindowPos = Vector3.zero;
 
+    [SerializeField] private UnityEvent OnEnterInCarBegin;
+    [SerializeField] private UnityEvent OnEnterInCarMiddle;
+    [SerializeField] private UnityEvent OnEnterInCarEnd;
+    
     [SerializeField] private Shotable Glass;
     // Members
 
@@ -32,15 +37,21 @@ public class MonkController : MonoBehaviour
         
         monkOrigin.localPosition = MonkStartPos;
         anim.SetTrigger("Enter");
+        
+        OnEnterInCarBegin.Invoke();
         monkOrigin.DOLocalMove(MonkWindowPos, 1.0f).SetEase(Ease.OutCirc).OnComplete(() => {
             if (Glass != null)
             {
                 Glass.Shoted(Glass.transform.position,
                     MonkWindowPos.x > 0 ? new Vector3(-1, 0, 0) : new Vector3(1, 0, 0));
             }
-
+            OnEnterInCarMiddle.Invoke();
+            
             monkOrigin.DOLocalMove(new Vector3(0f,0f,0f), 0.75f).SetEase(Ease.InSine);
-            monkOrigin.DOLocalRotate(new Vector3(0f,0f,0f), 0.75f).SetEase(Ease.InSine);
+            monkOrigin.DOLocalRotate(new Vector3(0f,0f,0f), 0.75f).SetEase(Ease.InSine).OnComplete(() =>
+            {
+                OnEnterInCarEnd.Invoke();
+            });
         });
     }
 }

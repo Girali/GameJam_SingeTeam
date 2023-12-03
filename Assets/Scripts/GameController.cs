@@ -23,6 +23,8 @@ public class GameController : MonoBehaviour
     {
         GUI_Controller.Instance.FadeOut();
         GameController.SetLockCursor(true);
+        
+        PlayerPrefs.SetFloat("Score", _score);
     }
 
     public void GameOver()
@@ -50,9 +52,9 @@ public class GameController : MonoBehaviour
         {
             _scoreText.text = "$" + _score;
         }
+        PlayerPrefs.SetFloat("Score", _score);
         
         GUI_Controller.Instance.stars.UpdateView(pointsDone);
-        PlayerPrefs.SetFloat("Score", _score);
     }
 
     public int pointsDone = 0;
