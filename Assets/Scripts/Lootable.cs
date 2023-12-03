@@ -9,6 +9,11 @@ public class Lootable : MonoBehaviour
         _hasBeenLooted = false;
         _isInsideLootArea = false;
     }
+
+    public bool Looted
+    {
+        get => _hasBeenLooted;
+    }
     
     private void OnTriggerEnter(Collider other)
     {

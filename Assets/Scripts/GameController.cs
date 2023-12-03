@@ -44,12 +44,17 @@ public class GameController : MonoBehaviour
     
     public void AddLoot()
     {
+        pointsDone++;
         _score += 100;
         if (_scoreText)
         {
             _scoreText.text = "$" + _score;
         }
+        
+        GUI_Controller.Instance.stars.UpdateView(pointsDone);
     }
+
+    private int pointsDone = 0;
     
     // Private fields
     [SerializeField] private uint _score = 0;

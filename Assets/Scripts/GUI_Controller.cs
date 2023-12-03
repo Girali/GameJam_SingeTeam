@@ -19,6 +19,9 @@ public class GUI_Controller : MonoBehaviour
     [SerializeField] private Jun_TweenRuntime fadeIn;
     [SerializeField] private Jun_TweenRuntime fadeOut;
 
+    public UI_Stars stars;
+    public UI_StressBar stressBar;
+    
     public delegate void UICallaback();
     public event UICallaback fadeInCallbackEvent;
     public event UICallaback fadeOutCallbackEvent;

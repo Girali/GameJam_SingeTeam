@@ -47,6 +47,14 @@ public class PlayerController : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
             gunController.Shot();
+            if(carController)
+                carController.mainCarController.AddStress();
+        }
+        
+        if (Input.GetMouseButtonDown(1))
+        {
+            if(carController)
+                carController.mainCarController.SubStress();
         }
         
         float x = Input.GetAxis("Mouse X");

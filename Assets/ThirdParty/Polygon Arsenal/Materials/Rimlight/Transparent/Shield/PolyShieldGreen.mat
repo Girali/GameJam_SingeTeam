@@ -55,8 +55,20 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Floats:
-    - FresnelSize: 7.5
+    - FresnelSize: 1.88
     - Vector1_CA637FD8: 5.5
     - _BumpScale: 1
     - _Cutoff: 0.5
@@ -78,13 +90,14 @@ Material:
     - _UVSec: 0
     - _ZWrite: 0
     m_Colors:
-    - Albedo: {r: 0, g: 0.05, b: 0, a: 0}
+    - Albedo: {r: 0.050980393, g: 0.042959433, b: 0, a: 0.44705883}
     - Color_1A0BCCE7: {r: 0.31413615, g: 2, b: 0.3164497, a: 0}
     - Color_8EE4FC62: {r: 0.015650429, g: 0.08627451, b: 0, a: 1}
-    - FresnelColor: {r: 0.30902234, g: 3.4415908, b: 0.17207958, a: 0}
+    - FresnelColor: {r: 0.18018797, g: 1.7091464, b: 3.441591, a: 0.5176471}
     - _Color: {r: 0.61764705, g: 0.8734281, b: 1, a: 0.103}
     - _EmisColor: {r: 0.66176474, g: 0.66176474, b: 0.66176474, a: 0}
     - _EmissionColor: {r: 0.2506488, g: 0.42396495, b: 0.44852942, a: 1}
     - _InnerColor: {r: 0, g: 0.13235295, b: 0.00091277156, a: 1}
     - _RimColor: {r: 0.07586217, g: 1, b: 0, a: 0}
     - _TintColor: {r: 0.5, g: 0.5, b: 0.5, a: 0.5}
+  m_BuildTextureStacks: []
