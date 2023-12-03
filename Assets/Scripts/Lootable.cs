@@ -14,6 +14,8 @@ public class Lootable : MonoBehaviour
     {
         get => _hasBeenLooted;
     }
+
+    [SerializeField] private GameObject visuals;
     
     private void OnTriggerEnter(Collider other)
     {
@@ -21,6 +23,7 @@ public class Lootable : MonoBehaviour
         {
             _isInsideLootArea = true;
             StartCoroutine(Loot());
+            GUI_Controller.Instance.lootingLoad.SetActive(true);
         }
     }
 
@@ -29,6 +32,7 @@ public class Lootable : MonoBehaviour
         if (other.CompareTag("Player") && !_hasBeenLooted)
         {
             _isInsideLootArea = false;
+            GUI_Controller.Instance.lootingLoad.SetActive(false);
         }
     }
 
@@ -46,9 +50,10 @@ public class Lootable : MonoBehaviour
             }
             
             GameController.Instance.AddLoot();
+            GUI_Controller.Instance.lootingLoad.SetActive(false);
 
             _hasBeenLooted = true;
-
+            visuals.SetActive(false);
             yield return new WaitForSeconds(5f);
 
             Destroy(gameObject);

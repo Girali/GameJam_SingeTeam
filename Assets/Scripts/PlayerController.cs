@@ -25,11 +25,41 @@ public class PlayerController : MonoBehaviour
     private Vector3 targetPos = Vector3.zero;
     private int layerMask;
 
+    private Transform headPos;
+    private AudioSourceRandomizer humanSound;
+    [SerializeField] private GameObject punchTrail;
+    [SerializeField] private GameObject punchPrefab;
+
     private void Awake()
     {
         layerMask = LayerMask.GetMask("Default");
         gunController = GetComponent<GunController>();
         SetCar(FindObjectOfType<CarController>());
+    }
+
+    private bool punching = false;
+    
+    private void Punch()
+    {
+        punching = true;
+        targetPosition.transform.position = headPos.position;
+        StartCoroutine(CRT_Punch());
+    }
+
+    IEnumerator CRT_Punch()
+    {
+        punchTrail.SetActive(true);
+        float dist = Vector3.Distance(visuals.transform.position, headPos.position);
+        while (dist > 0.1f)
+        {
+            dist = Vector3.Distance(visuals.transform.position, headPos.position);
+            visuals.transform.localPosition = Vector3.Lerp(visuals.transform.localPosition, targetPosition.transform.localPosition, 0.5f);
+            yield return null;
+        }
+        punchTrail.SetActive(false);
+        Instantiate(punchPrefab, visuals.transform.position, quaternion.identity, headPos);
+        humanSound.PlaySound();
+        punching = false;
     }
 
     public void SetCar(CarController car)
@@ -40,6 +70,8 @@ public class PlayerController : MonoBehaviour
         transform.parent = carController.PlayerPos;
         initialPosition = targetPosition.transform.localPosition;
         camInitialPos = cam.transform.localPosition;
+        headPos = carController.headPosition;
+        humanSound = carController.humanSound;
     }
 
     private void Update()
@@ -51,10 +83,11 @@ public class PlayerController : MonoBehaviour
                 carController.mainCarController.AddStress();
         }
         
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) && !punching)
         {
             if(carController)
                 carController.mainCarController.SubStress();
+            Punch();
         }
         
         float x = Input.GetAxis("Mouse X");
@@ -64,11 +97,13 @@ public class PlayerController : MonoBehaviour
 
         targetPos.x = Mathf.Clamp(targetPos.x, -viewBoundry.x, viewBoundry.x);
         targetPos.y = Mathf.Clamp(targetPos.y, -viewBoundry.y, viewBoundry.y);
-        
-        targetPosition.transform.localPosition = initialPosition + targetPos;
 
-        visuals.transform.localPosition = Vector3.Lerp(visuals.transform.localPosition, targetPosition.transform.localPosition, visualLerpSpeed);
-        
+        if (!punching)
+        {
+            targetPosition.transform.localPosition = initialPosition + targetPos;
+            visuals.transform.localPosition = Vector3.Lerp(visuals.transform.localPosition, targetPosition.transform.localPosition, visualLerpSpeed);
+        }
+
         float tX = targetPos.x / viewBoundry.x;
         float tY = targetPos.y / viewBoundry.y;
         

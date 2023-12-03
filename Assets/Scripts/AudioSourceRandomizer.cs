@@ -11,8 +11,20 @@ public class AudioSourceRandomizer : MonoBehaviour
     [SerializeField] private AudioClip[] audioClips;
     [SerializeField, MinMaxSlider(0.2f,2f)] private Vector2 pitch = new Vector2(0.8f,1.2f);
     [SerializeField, MinMaxSlider(0.2f,2f)] private Vector2 volume = new Vector2(0.8f,1.2f);
+
+    [SerializeField] private bool autoPlay = true;
     
     private void Awake()
+    {
+        _audioSource = GetComponent<AudioSource>();
+        _audioSource.pitch = Random.Range(pitch.x, pitch.y);
+        _audioSource.volume = Random.Range(volume.x, volume.y);
+        
+        if(audioClips != null && audioClips.Length != 0 && autoPlay)
+            _audioSource.PlayOneShot(audioClips[Random.Range(0, audioClips.Length)]);
+    }
+
+    public void PlaySound()
     {
         _audioSource = GetComponent<AudioSource>();
         _audioSource.pitch = Random.Range(pitch.x, pitch.y);

@@ -20,6 +20,10 @@ public class CarController : MonoBehaviour
     [SerializeField] private Transform carRender;
 
     [SerializeField] private GameObject steeringWheel;
+
+    public Transform headPosition;
+    public AudioSourceRandomizer humanSound;
+    
     private Vector3 rotAngle;
     public Transform PlayerPos
     {

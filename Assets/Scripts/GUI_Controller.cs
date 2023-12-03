@@ -26,8 +26,11 @@ public class GUI_Controller : MonoBehaviour
     public event UICallaback fadeInCallbackEvent;
     public event UICallaback fadeOutCallbackEvent;
 
-    public void CallbackFadeIn(){fadeInCallbackEvent.Invoke();}
-    public void CallbackFadeOut(){fadeOutCallbackEvent.Invoke();}
+    public GameObject lootingLoad;
+    
+    public void CallbackFadeIn(){fadeInCallbackEvent?.Invoke();}
+    public void CallbackFadeOut(){fadeOutCallbackEvent?.Invoke();}
+    
     
     public void FadeIn()
     {

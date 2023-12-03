@@ -45,7 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a2f160d4f8d55b4683d7b185a80fc92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootVFX: {fileID: 8515985137479807998, guid: 1937f200433ad004eb6b51e10cd39ace, type: 3}
+  visuals: {fileID: 8083365559689685460}
+  lootVFX: {fileID: 5944151090932170298, guid: f5f47b3c6bb0511458abdb3fb970f6ab, type: 3}
 --- !u!135 &3647633077055076657
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -124,6 +125,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 89a5880db63937c4db5ac8be1cce8406, type: 3}
+--- !u!1 &8083365559689685460 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1832608762662134, guid: 89a5880db63937c4db5ac8be1cce8406, type: 3}
+  m_PrefabInstance: {fileID: 8082660168046847266}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8080820362486414770 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4424260359510160, guid: 89a5880db63937c4db5ac8be1cce8406, type: 3}
