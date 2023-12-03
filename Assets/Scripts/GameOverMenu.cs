@@ -16,11 +16,13 @@ public class GameOverMenu : MonoBehaviour
         GUI_Controller.Instance.fadeInCallbackEvent += LoadScene;
         GUI_Controller.Instance.FadeOut();
         GameController.SetLockCursor(false);
+        MainAudioSourceFader.Instance.Play();
     }
 
     public void Play()
     {
         GUI_Controller.Instance.FadeIn();
+        MainAudioSourceFader.Instance.Stop();
     }
 
     private void LoadScene()

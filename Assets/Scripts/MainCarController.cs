@@ -99,6 +99,7 @@ public class MainCarController : MonoBehaviour
         if (carMove)
         {
             v = Vector3.Scale(transform.forward, new Vector3(1,0,1)) * _speed * (currentStress / 100f);
+
             if (_canPlay)
             {
                 rb.MoveRotation(transform.rotation * Quaternion.Euler(0f, Yaw * _rotationSpeed * Time.fixedDeltaTime, 0f));
@@ -110,6 +111,8 @@ public class MainCarController : MonoBehaviour
         currentVelocity = Vector3.Lerp(currentVelocity, v, acceleration);
         rb.velocity = new Vector3(currentVelocity.x,rb.velocity.y,currentVelocity.z);
         engine.pitch = _animationCurve.Evaluate(rb.velocity.magnitude / max);
+        
+        MusicManager.Instance._epicness = currentStress / 100f;
     }
 
     private void OnCollisionStay(Collision other)

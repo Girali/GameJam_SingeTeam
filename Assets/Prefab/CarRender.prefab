@@ -146,7 +146,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 3cf9ab692d0be0d40a857dec6d824527, type: 3}
   pitch: {x: 0.9937889, y: 1.2}
   volume: {x: 0.65838516, y: 0.947205}
-  autoPlay: 1
+  autoPlay: 0
 --- !u!1 &1088190005
 GameObject:
   m_ObjectHideFlags: 0
