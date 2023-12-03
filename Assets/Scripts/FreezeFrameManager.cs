@@ -4,16 +4,14 @@ using UnityEngine.UI;
 
 public class FreezeFrameManager : MonoBehaviour
 {
-    public Canvas freezeFrameCanvas;
-    public Canvas gameUICanvas;
+    public GameObject freezeFrameCanvas;
 
     private void Start()
     {
         _isPaused = false;
-        if (freezeFrameCanvas && gameUICanvas)
+        if (freezeFrameCanvas)
         {
-            gameUICanvas.enabled = false;
-            freezeFrameCanvas.enabled = true;
+            freezeFrameCanvas.SetActive(true);
             _isPaused = true;
             StartCoroutine(LoopTextColor(freezeFrameCanvas.GetComponentInChildren<Text>()));
         }
@@ -23,8 +21,7 @@ public class FreezeFrameManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && _isPaused)
         {
-            freezeFrameCanvas.enabled = false;
-            gameUICanvas.enabled = true;
+            freezeFrameCanvas.SetActive(false);
             _isPaused = false;
         }
     }
