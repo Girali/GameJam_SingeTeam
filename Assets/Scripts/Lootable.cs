@@ -1,9 +1,13 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Lootable : MonoBehaviour
 {
+    // Parameters
+    [SerializeField] private UnityEvent OnLooted;
+    
     private void Start()
     {
         _hasBeenLooted = false;
@@ -42,13 +46,15 @@ public class Lootable : MonoBehaviour
 
         if (_isInsideLootArea)
         {
+            
+
             GameObject vfx = null;
             
             if (lootVFX)
             {
                 vfx = Instantiate(lootVFX, transform.position + (Vector3.up * 5f), lootVFX.transform.rotation);
             }
-            
+            OnLooted.Invoke();
             GameController.Instance.AddLoot();
             GUI_Controller.Instance.lootingLoad.SetActive(false);
 
