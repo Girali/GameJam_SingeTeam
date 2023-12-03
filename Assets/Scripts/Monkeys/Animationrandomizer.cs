@@ -5,24 +5,27 @@ using UnityEngine;
 
 namespace Monkeys
 {
+    
     public class Animationrandomizer : MonoBehaviour
     {
         [SerializeField]
+        private Animator anim;
+        
+        [SerializeField]
         private float MinDelay = 0;
         [SerializeField]
-        private float MaxDelay = 0;
+        private float MaxDelay = 1;
 
         [SerializeField] private string RandomTrigger ="Action";
         [SerializeField] private string RandomIndexName = "ActionIndex";
         [SerializeField] private int MaxIndex = 6;
     
-        // Members
-        private Animator anim;
+
     
         // Start is called before the first frame update
         void Start()
         {
-            anim = GetComponent<Animator>();
+
 
             if (anim is null)
             {

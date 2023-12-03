@@ -32,7 +32,7 @@ public class CarController : MonoBehaviour
         rotAngle = steeringWheel.transform.right;
     }
 
-    public void Update(float x)
+    public void Updatebaba(float x)
     {
         float t = (x + 1) / 2f;
         //UpdateCarTilt(t, t, 0);
