@@ -19,8 +19,8 @@ namespace Monkeys
         [SerializeField] private string RandomTrigger ="Action";
         [SerializeField] private string RandomIndexName = "ActionIndex";
         [SerializeField] private int MaxIndex = 6;
-    
 
+        [SerializeField] private bool autoAnimate = false;
     
         // Start is called before the first frame update
         void Start()
@@ -35,7 +35,8 @@ namespace Monkeys
 
         IEnumerator Randomise()
         {
-            anim.SetTrigger("Enter");
+            if(autoAnimate)
+                anim.SetTrigger("Enter");
 
             while (true)
             {
