@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5946568449219856868}
   - component: {fileID: 5946568449219856871}
+  - component: {fileID: 8995449832902268429}
   m_Layer: 0
   m_Name: Source2
   m_TagString: Untagged
@@ -127,6 +128,31 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!169 &8995449832902268429
+AudioLowPassFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5946568449219856870}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_LowpassResonanceQ: 1
+  lowpassLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.22727273
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &5946568449748325569
 GameObject:
   m_ObjectHideFlags: 0
@@ -172,20 +198,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86e63acd51500b94cb445b88d68e5aab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _goalTime: 0
   _sources:
   - {fileID: 5946568450458290833}
   - {fileID: 5946568449219856871}
-  _audioSourceToggle: 0
   _loops:
   - {fileID: 11400000, guid: 4340ee5593f43994699b3d34cfa1b663, type: 2}
   - {fileID: 11400000, guid: a2bddd44fc6adbe4293b317da4291008, type: 2}
   - {fileID: 11400000, guid: ee5b081c68e110c458beb347d460ee78, type: 2}
   - {fileID: 11400000, guid: a6a3571f9019d3c4fb3d13285748f0a1, type: 2}
-  - {fileID: 11400000, guid: 3dfd4ad5a73519247be1089fc561c67d, type: 2}
   _epicness: 0
   _currentLoopIndex: 0
-  _subLoopIndex: 0
+  _curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 2
+      outSlope: 2
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  filters:
+  - {fileID: 6705190125437849920}
+  - {fileID: 8995449832902268429}
 --- !u!1 &5946568450458290832
 GameObject:
   m_ObjectHideFlags: 0
@@ -196,6 +245,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5946568450458290846}
   - component: {fileID: 5946568450458290833}
+  - component: {fileID: 6705190125437849920}
   m_Layer: 0
   m_Name: Source1
   m_TagString: Untagged
@@ -304,6 +354,31 @@ AudioSource:
     - serializedVersion: 3
       time: 0
       value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!169 &6705190125437849920
+AudioLowPassFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5946568450458290832}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_LowpassResonanceQ: 1
+  lowpassLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0.22727273
       inSlope: 0
       outSlope: 0
       tangentMode: 0
