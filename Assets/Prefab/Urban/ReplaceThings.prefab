@@ -1,0 +1,84 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &8684092149235763
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8684092149235762}
+  - component: {fileID: 8684092149235761}
+  m_Layer: 0
+  m_Name: ReplaceThings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8684092149235762
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8684092149235763}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 120.72107, y: 2.3134613, z: -8.978806}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8684092149235761
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8684092149235763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f369cbc1e49bac4a9b5a50df201eda3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  thingToReplaces:
+  - name: SM_Prop_SidewalkPoles
+    prefab: {fileID: 6931709813354322490, guid: 2b2120be57e142246b0b8a92554b32fb, type: 3}
+  - name: SM_Prop_LightPole_Base
+    prefab: {fileID: 3409555546738202233, guid: c760e770c0610c14fb7c75db350e4928, type: 3}
+  - name: SM_Prop_Trashbin
+    prefab: {fileID: 6951398972759993012, guid: 25abff2a82f841a4a9957bb91dde075d, type: 3}
+  - name: SM_Prop_Sign_GiveWay
+    prefab: {fileID: 7946739083006004507, guid: e87b3d975b4e8d943b3857c6bca688bf, type: 3}
+  - name: SM_Prop_PowerBox
+    prefab: {fileID: 5087768669012806635, guid: 97188b32e57469c438adb43ccf157fa7, type: 3}
+  - name: SM_Env_Tree
+    prefab: {fileID: 4798908489677261847, guid: 7ecb283516b89c24eb94fffedf3c7119, type: 3}
+  - name: SM_Prop_HotdogStand
+    prefab: {fileID: 1039793580146462836, guid: d15f2a3e7b2d4fc4db7672c487e61368, type: 3}
+  - name: SM_Prop_Hydrant
+    prefab: {fileID: 4233689320089432113, guid: bc36f3317d3888c42a97f8a07abe5d63, type: 3}
+  - name: SM_Prop_Newspaper
+    prefab: {fileID: 5452868899296689857, guid: 3a73b67fd337f8d45b5b78928f8a605b, type: 3}
+  - name: SM_Prop_ParkBench
+    prefab: {fileID: 1412776201193080976, guid: ec4771d5f7659134abb64504f5002562, type: 3}
+  - name: SM_Prop_Sign_Bustop
+    prefab: {fileID: 4610244285111546003, guid: 52fc9f7cc0548714886f2aa610a4ffbc, type: 3}
+  - name: SM_Prop_BusStop
+    prefab: {fileID: 6245145534448749686, guid: d9da1ed199cbbc543b8b059cb56a5e2d, type: 3}
+  - name: SM_Prop_Barrier
+    prefab: {fileID: 6957848346875507580, guid: 6bdf8e0f5a9bfa1459bb905649bcc5c7, type: 3}
+  - name: SM_Prop_Cone
+    prefab: {fileID: 2659751001055311032, guid: d65926a755156584e86df825f026d3ed, type: 3}
+  - name: SM_Prop_Mailbox
+    prefab: {fileID: 7350142849959535948, guid: 984a8fc51cf305243b769dc8497f1315, type: 3}
+  - name: SM_Prop_ParkingMeter
+    prefab: {fileID: 126701755580711115, guid: c0a6b2d44bb80c944811fcaf6cd29d0a, type: 3}
+  - name: SM_Prop_Phones
+    prefab: {fileID: 4457336242820252218, guid: 0a1fe88462caddf4d936abb6ca715a92, type: 3}
+  - name: SM_Prop_Skip
+    prefab: {fileID: 8261338287804853121, guid: c897225a7fa53ac4ca6b9f1948bf2c52, type: 3}
+  - name: SM_Prop_TrashBag
+    prefab: {fileID: 4616179150130939180, guid: 61aff2c68a2be8c408e845926eeef83e, type: 3}

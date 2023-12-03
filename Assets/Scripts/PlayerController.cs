@@ -30,7 +30,6 @@ public class PlayerController : MonoBehaviour
         layerMask = LayerMask.GetMask("Default");
         gunController = GetComponent<GunController>();
         SetCar(FindObjectOfType<CarController>());
-        GameController.Instance.SetLockCursor(true);
     }
 
     public void SetCar(CarController car)

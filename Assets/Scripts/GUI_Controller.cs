@@ -15,4 +15,24 @@ public class GUI_Controller : MonoBehaviour
             return _instance;
         }
     }
+
+    [SerializeField] private Jun_TweenRuntime fadeIn;
+    [SerializeField] private Jun_TweenRuntime fadeOut;
+
+    public delegate void UICallaback();
+    public event UICallaback fadeInCallbackEvent;
+    public event UICallaback fadeOutCallbackEvent;
+
+    public void CallbackFadeIn(){fadeInCallbackEvent.Invoke();}
+    public void CallbackFadeOut(){fadeOutCallbackEvent.Invoke();}
+    
+    public void FadeIn()
+    {
+        fadeIn.Play();
+    }
+    
+    public void FadeOut()
+    {
+        fadeOut.Play();
+    }
 }

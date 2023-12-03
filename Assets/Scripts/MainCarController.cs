@@ -64,11 +64,19 @@ public class MainCarController : MonoBehaviour
     
     private void OnCollisionEnter(Collision other)
     {
+        BreakOnContact breakOnContact = other.collider.GetComponent<BreakOnContact>();
+        if (breakOnContact)
+        {
+            breakOnContact.OnCollision();
+            return;
+        }
+        
         if (other.gameObject.CompareTag("Environment"))
         {
-            if (rb.velocity.magnitude > 3f)
+            if (rb.velocity.magnitude > 10f)
             {
                 carRagdoll.ActivateRagdoll();
+                GameController.Instance.GameOver();
             }
         }
     }

@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
@@ -17,7 +19,24 @@ public class GameController : MonoBehaviour
         }
     }
 
-    public void SetLockCursor(bool b)
+    private void Awake()
+    {
+        GUI_Controller.Instance.FadeOut();
+        GameController.SetLockCursor(true);
+    }
+
+    public void GameOver()
+    {
+        GUI_Controller.Instance.FadeIn();
+        GUI_Controller.Instance.fadeInCallbackEvent += LoadGameOverScene;
+    }
+
+    void LoadGameOverScene()
+    {
+        SceneManager.LoadScene("LoseMenu");
+    }
+
+    public static void SetLockCursor(bool b)
     {
         Cursor.lockState = b ? CursorLockMode.Locked : CursorLockMode.None;
         Cursor.visible = !b;
