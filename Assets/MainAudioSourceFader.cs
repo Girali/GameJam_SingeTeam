@@ -5,14 +5,14 @@ using UnityEngine;
 
 public class MainAudioSourceFader : MonoBehaviour
 {
-    private static GUI_Controller _instance;
+    private static MainAudioSourceFader _instance;
 
-    public static GUI_Controller Instance
+    public static MainAudioSourceFader Instance
     {
         get
         {
             if (_instance == null)
-                _instance = FindObjectOfType<GUI_Controller>(); 
+                _instance = FindObjectOfType<MainAudioSourceFader>(); 
             return _instance;
         }
     }
@@ -26,12 +26,12 @@ public class MainAudioSourceFader : MonoBehaviour
         _audioSource = GetComponent<AudioSource>();
     }
 
-    private void FadeOut()
+    public void Play()
     {
         StartCoroutine(CRT_Fade(true, fadeDuration));
     }
     
-    private void FadeIn()
+    public void Stop()
     {
         StartCoroutine(CRT_Fade(false, fadeDuration));
     }

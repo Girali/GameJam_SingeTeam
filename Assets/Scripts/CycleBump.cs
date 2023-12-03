@@ -11,6 +11,8 @@ public class CycleBump : MonoBehaviour
     
     IEnumerator Start()
     {
+        anim.SetBool("Drive", false);
+
         while (true)
         {
             yield return new WaitForSeconds(Random.Range(delay.x, delay.y));
