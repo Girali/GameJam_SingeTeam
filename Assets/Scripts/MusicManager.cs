@@ -18,17 +18,20 @@ public class MusicManager : MonoBehaviour
     }
 
     private double _clipDuration;
-    [SerializeField] private double _goalTime;
+    private double _goalTime;
     [SerializeField] private AudioSource[] _sources;
-    [SerializeField] private int _audioSourceToggle;
+    private int _audioSourceToggle;
     private AudioClip _currentClip;
 
     [SerializeField] private List<MusicLoop> _loops;
     [Range(0,1)]
     public float _epicness;
     [SerializeField] private int _currentLoopIndex;
-    [SerializeField] private int _subLoopIndex;
-  
+    private int _subLoopIndex;
+
+    [SerializeField] private AnimationCurve _curve;
+    [SerializeField] private AudioLowPassFilter[] filters;
+
 
     private void Awake()
     {
@@ -55,6 +58,12 @@ public class MusicManager : MonoBehaviour
         {
             PlayClip();
             PlayScheduledClip();
+        }
+
+        float _value = _curve.Evaluate(_epicness);
+        foreach (AudioLowPassFilter filter in filters)
+        {
+            filter.cutoffFrequency = Mathf.Clamp((_value * 22000),2000, 22000);
         }
         
     }
