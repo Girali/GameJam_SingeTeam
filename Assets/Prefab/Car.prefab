@@ -52,6 +52,32 @@ MonoBehaviour:
   left: {fileID: 2164708838630897952}
   right: {fileID: 2164708838438435138}
   steeringLimit: {x: -12.462525, y: 12.162743}
+  engine: {fileID: 3731547677780962568}
+  max: 15
+  _animationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.009860607
+      value: 0.80068535
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 0.9715576
+      value: 1.2350464
+      inSlope: 0.018639132
+      outSlope: 0.018639132
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33330816
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
   carRagdoll: {fileID: 970620267}
 --- !u!54 &1959726003
 Rigidbody:
@@ -156,5 +182,10 @@ WheelCollider:
 --- !u!146 &2164708838438435138 stripped
 WheelCollider:
   m_CorrespondingSourceObject: {fileID: 1777740836, guid: 87df60be7ff73284283aeb9f1bc620fa, type: 3}
+  m_PrefabInstance: {fileID: 2164708838831510886}
+  m_PrefabAsset: {fileID: 0}
+--- !u!82 &3731547677780962568 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3297631015515863150, guid: 87df60be7ff73284283aeb9f1bc620fa, type: 3}
   m_PrefabInstance: {fileID: 2164708838831510886}
   m_PrefabAsset: {fileID: 0}

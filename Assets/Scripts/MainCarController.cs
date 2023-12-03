@@ -18,7 +18,10 @@ public class MainCarController : MonoBehaviour
     [SerializeField] private WheelCollider left;
     [SerializeField] private WheelCollider right;
     [SerializeField, MinMaxSlider(-40,40)] private Vector2 steeringLimit = new Vector2(-10, 10);
-    
+
+    [SerializeField] private AudioSource engine;
+    [SerializeField] private float max;
+    [SerializeField] private AnimationCurve _animationCurve;
     public float Yaw { get; set; } = 0f;
     public CarRagdoll carRagdoll;
 
@@ -50,6 +53,7 @@ public class MainCarController : MonoBehaviour
         
         currentVelocity = Vector3.Lerp(currentVelocity, v, acceleration);
         rb.velocity = new Vector3(currentVelocity.x,rb.velocity.y,currentVelocity.z);
+        engine.pitch = _animationCurve.Evaluate(rb.velocity.magnitude / max);
     }
 
     private void OnCollisionStay(Collision other)
