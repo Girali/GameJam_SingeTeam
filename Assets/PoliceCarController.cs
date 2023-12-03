@@ -1,33 +1,33 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class PoliceCarController : Shotable
 {
-    private GameObject player;
+    [SerializeField] private GameObject player;
     private Rigidbody rb;
 
     [SerializeField] private float speed = 10f;
-    [SerializeField] private GameObject prefabExplod;
-    [SerializeField] private GameObject impact;
+    [SerializeField] private float _rotationSpeed = 40f;
     
-    private int currentLife = 15;
+    [SerializeField] private AudioSource enigne;
+    [SerializeField] private AudioSource siren;
+    [SerializeField] private AnimationCurve _animationCurve;
+
+    [SerializeField] private WheelCollider right;
+    [SerializeField] private WheelCollider left;
+
+    [SerializeField, MinMaxSlider(-40,40)] private Vector2 maxSteeringAngle;
+
+    [SerializeField] private float maxDistanceDisapwn;
     
-    public virtual bool Shoted(Vector3 pos, Vector3 normal)
+    public void Init(GameObject p)
     {
-        Instantiate(impact, pos, Quaternion.LookRotation(normal));
-
-        currentLife--;
-
-        if (currentLife < 0)
-        {
-            Instantiate(prefabExplod, transform.position, prefabExplod.transform.rotation);
-            Destroy(gameObject);
-        }
-        
-        return true;
+        player = p;
     }
     
     private void Awake()
@@ -35,11 +35,64 @@ public class PoliceCarController : Shotable
         rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    private IEnumerator Start()
     {
-        Vector3 dir = (transform.position - player.transform.position).normalized * speed;
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(10f, 20f));
 
-        
-        rb.velocity = dir;
+            siren.Play();
+            yield return new WaitForSeconds(Random.Range(40f, 60f));
+        }
+    }
+
+    private void OnCollisionEnter(Collision other)
+    {
+        BreakOnContact breakOnContact = other.collider.GetComponent<BreakOnContact>();
+        if (breakOnContact)
+        {
+            breakOnContact.OnCollision();
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (player)
+        {
+            Vector3 dir = Vector3.Scale(player.transform.position - transform.position, new Vector3(1,0,1)).normalized;
+
+            Vector3 toplayerdir = Vector3.Scale(dir, new Vector3(1, 0, 1)); 
+            Vector3 policeDir = Vector3.Scale(transform.forward, new Vector3(1, 0, 1)); 
+            
+            float a = Vector3.SignedAngle(-toplayerdir.normalized,policeDir.normalized, Vector3.up);
+
+            float t = Mathf.Clamp(a / 45f, -1, 1);
+
+            left.steerAngle = -Mathf.Lerp(maxSteeringAngle.x, maxSteeringAngle.y, (1+t) /2f);
+            right.steerAngle = -Mathf.Lerp(maxSteeringAngle.x, maxSteeringAngle.y, (1+t) /2f);
+
+            rb.MoveRotation(transform.rotation * Quaternion.Euler(0f, t * _rotationSpeed * Time.fixedDeltaTime, 0f));
+            rb.velocity = new Vector3(dir.x * speed, rb.velocity.y, dir.z * speed);
+        }
+
+        enigne.pitch = _animationCurve.Evaluate(rb.velocity.magnitude / 10f);
+    }
+
+    private void Update()
+    {
+        if (player)
+        {
+            float dist = Vector3.Distance(transform.position, player.transform.position);
+
+            if (dist > maxDistanceDisapwn)
+            {
+                Destroy(gameObject);
+            }
+        }
+    }
+
+    private void OnDestroy()
+    {
+        PoliceController.Instance.CarDestoryed();
     }
 }

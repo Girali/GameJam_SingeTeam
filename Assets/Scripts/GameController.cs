@@ -55,7 +55,7 @@ public class GameController : MonoBehaviour
         PlayerPrefs.SetFloat("Score", _score);
     }
 
-    private int pointsDone = 0;
+    public int pointsDone = 0;
     
     // Private fields
     [SerializeField] private uint _score = 0;
