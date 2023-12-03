@@ -14,7 +14,8 @@ public class LocationRandomizer : MonoBehaviour
     {
         foreach (Transform place in transform.GetComponentsInChildren<Transform>())
         {
-            RandomPlaces.Add(place);
+            if(place.CompareTag("Lootzone"))
+                RandomPlaces.Add(place);
         }
         
         Debug.Log($"{this.gameObject.name} has {RandomPlaces.Count} possible positions");
