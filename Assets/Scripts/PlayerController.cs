@@ -74,8 +74,16 @@ public class PlayerController : MonoBehaviour
         humanSound = carController.humanSound;
     }
 
+    private bool resetDone = false;
+
     private void Update()
     {
+        if (GameController.Instance.carStart && !resetDone)
+        {
+            targetPos = initialPosition;
+            resetDone = true;
+        }
+        
         if (Input.GetMouseButtonDown(0))
         {
             gunController.Shot();
@@ -106,6 +114,8 @@ public class PlayerController : MonoBehaviour
 
         float tX = targetPos.x / viewBoundry.x;
         float tY = targetPos.y / viewBoundry.y;
+
+        GUI_Controller.Instance.debug.Pos((1+tX) / 2f, (1+tY) / 2f);
         
         if (carController && carController.mainCarController)
         {

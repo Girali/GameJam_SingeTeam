@@ -54,6 +54,10 @@ public class MainCarController : MonoBehaviour
     
     private float currentStress;
     private float targetStress;
+
+    private float cdUnstuck = 3f;
+    private float timerUnstuck = 0;
+    private bool stuck = false;
     
     public void AddStress()
     {
@@ -86,6 +90,9 @@ public class MainCarController : MonoBehaviour
     private IEnumerator Start()
     {
         yield return new WaitForSeconds(3f);
+        yield return new WaitUntil(() => GameController.Instance.carStart);
+        yield return new WaitForSeconds(1f);
+
         carMove = true;
     }
 
@@ -99,7 +106,9 @@ public class MainCarController : MonoBehaviour
         if (carMove)
         {
             v = Vector3.Scale(transform.forward, new Vector3(1,0,1)) * _speed * (currentStress / 100f);
-
+            right.motorTorque =(currentStress / 100f) * _speed * 10;
+            left.motorTorque =(currentStress / 100f) * _speed * 10;
+            
             if (_canPlay)
             {
                 rb.MoveRotation(transform.rotation * Quaternion.Euler(0f, Yaw * _rotationSpeed * Time.fixedDeltaTime, 0f));
@@ -113,6 +122,29 @@ public class MainCarController : MonoBehaviour
         engine.pitch = _animationCurve.Evaluate(rb.velocity.magnitude / max);
         
         MusicManager.Instance._epicness = currentStress / 100f;
+
+        float f = Vector3.SignedAngle(Vector3.up, transform.up, transform.forward);
+
+        rb.AddTorque(0,0,f * -1.5f);
+
+        if (!stuck && Mathf.Abs(f) > 160)
+        {
+            timerUnstuck = Time.time;
+            stuck = true;
+        }
+        else if (stuck && Mathf.Abs(f) < 160)
+        {
+            stuck = false;
+        }
+        else if (stuck && timerUnstuck + cdUnstuck < Time.time)
+        {
+            transform.position = transform.position + (Vector3.up * 2);
+            transform.Rotate(0,0,180,Space.Self);
+            stuck = false;
+        }
+        
+        Debug.DrawRay(transform.position, rb.velocity.normalized * 50, Color.red);
+        Debug.DrawRay(transform.position, rb.angularVelocity.normalized * 50, Color.magenta);
     }
 
     private void OnCollisionStay(Collision other)

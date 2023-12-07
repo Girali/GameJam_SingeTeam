@@ -19,11 +19,13 @@ public class GameController : MonoBehaviour
         }
     }
 
+    public bool carStart = false;
+
     private void Awake()
     {
         GUI_Controller.Instance.FadeOut();
         GameController.SetLockCursor(true);
-        
+        AudioListener.volume = MainMenu.Volume;
         PlayerPrefs.SetFloat("Score", _score);
     }
 
@@ -43,23 +45,23 @@ public class GameController : MonoBehaviour
         Cursor.lockState = b ? CursorLockMode.Locked : CursorLockMode.None;
         Cursor.visible = !b;
     }
+
+    public void AddMoney(int i)
+    {
+        _score += i;
+        GUI_Controller.Instance.money.AddAmmount(i);
+    }
     
     public void AddLoot()
     {
         pointsDone++;
-        _score += 100;
-        if (_scoreText)
-        {
-            _scoreText.text = "$" + _score;
-        }
+        AddMoney(100);
         PlayerPrefs.SetFloat("Score", _score);
-        
         GUI_Controller.Instance.stars.UpdateView(pointsDone);
     }
 
     public int pointsDone = 0;
     
     // Private fields
-    [SerializeField] private uint _score = 0;
-    [SerializeField] private Text _scoreText;
+    [SerializeField] private int _score = 0;
 }

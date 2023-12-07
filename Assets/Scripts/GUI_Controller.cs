@@ -21,7 +21,8 @@ public class GUI_Controller : MonoBehaviour
 
     public UI_Stars stars;
     public UI_StressBar stressBar;
-    
+    public DebuggerPostionMouse debug;
+    public UI_Money money;
     public delegate void UICallaback();
     public event UICallaback fadeInCallbackEvent;
     public event UICallaback fadeOutCallbackEvent;

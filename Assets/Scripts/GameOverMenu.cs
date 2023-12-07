@@ -16,6 +16,8 @@ public class GameOverMenu : MonoBehaviour
 
     private void Awake()
     {
+        AudioListener.volume = MainMenu.Volume;
+
         GUI_Controller.Instance.fadeInCallbackEvent += LoadScene;
         GUI_Controller.Instance.FadeOut();
         GameController.SetLockCursor(false);

@@ -7,11 +7,19 @@ using UnityEngine.UIElements;
 
 public class MainMenu : MonoBehaviour
 {
+    [SerializeField] private GameObject tutoBtn;
     private void Start()
     {
         GUI_Controller.Instance.FadeOut();
         MainAudioSourceFader.Instance.Play();
         volumeSlider.value = Volume;
+        
+        string s = PlayerPrefs.GetString("LastPlayed","Tutorial");
+
+        if (s == "Tutorial")
+        {
+            tutoBtn.SetActive(false);
+        }
     }
 
     public static float Volume
@@ -37,9 +45,20 @@ public class MainMenu : MonoBehaviour
     void LoadScene()
     {
         string s = PlayerPrefs.GetString("LastPlayed","Tutorial");
+
+        if (s == "Tutorial")
+        {
+            PlayerPrefs.SetString("LastPlayed","Tutorial");
+        }
+        
         SceneManager.LoadScene(s);
     }
 
+    public void LoadTuto()
+    {
+        SceneManager.LoadScene("Tutorial");
+    }
+    
     [SerializeField] private UnityEngine.UI.Slider volumeSlider;
     
     public void SetVolume()

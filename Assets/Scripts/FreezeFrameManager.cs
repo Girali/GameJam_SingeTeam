@@ -5,7 +5,9 @@ using UnityEngine.UI;
 public class FreezeFrameManager : MonoBehaviour
 {
     public GameObject freezeFrameCanvas;
-
+    public Rigidbody CAR;
+    
+    
     private void Start()
     {
         _isPaused = false;
@@ -19,10 +21,12 @@ public class FreezeFrameManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && _isPaused)
+        if (Input.GetMouseButtonDown(0) && _isPaused)
         {
             freezeFrameCanvas.SetActive(false);
             _isPaused = false;
+            CAR.isKinematic = false;
+            GameController.Instance.carStart = true;
         }
     }
 
