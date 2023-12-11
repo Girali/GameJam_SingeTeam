@@ -16,6 +16,7 @@ public class MainCarController : MonoBehaviour
     [SerializeField] private float _speed = 50f;
     [FoldoutGroup("CarMove")]
     [SerializeField] private float _rotationSpeed = 270f;
+    [SerializeField] private float lateralRotation = 10f;
     private bool _canPlay;
 
     [FoldoutGroup("CarMove")]
@@ -114,6 +115,8 @@ public class MainCarController : MonoBehaviour
                 rb.MoveRotation(transform.rotation * Quaternion.Euler(0f, Yaw * _rotationSpeed * Time.fixedDeltaTime, 0f));
                 right.steerAngle = Mathf.Lerp(steeringLimit.x, steeringLimit.y, (1 + Yaw) / 2f);
                 left.steerAngle = Mathf.Lerp(steeringLimit.x, steeringLimit.y, (1 + Yaw) / 2f);
+                
+                v += Vector3.Scale(transform.right, new Vector3(1,0,1)) * Yaw * lateralRotation * Time.fixedDeltaTime;
             }
         }
         

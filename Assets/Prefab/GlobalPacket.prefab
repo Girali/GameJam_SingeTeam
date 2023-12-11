@@ -3130,6 +3130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a446f1479867034097113f379a8e383, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  carStart: 0
   pointsDone: 0
   _score: 0
 --- !u!114 &1511800308
@@ -6648,6 +6649,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 3434893378798158382, guid: aade22bcc43be0f4d84d0161d5b5986e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.128
+      objectReference: {fileID: 0}
+    - target: {fileID: 3434893378798158382, guid: aade22bcc43be0f4d84d0161d5b5986e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.026
+      objectReference: {fileID: 0}
     - target: {fileID: 3960444384323630687, guid: aade22bcc43be0f4d84d0161d5b5986e, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -6691,6 +6700,14 @@ PrefabInstance:
     - target: {fileID: 3960444384323630687, guid: aade22bcc43be0f4d84d0161d5b5986e, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8574441171922084418, guid: aade22bcc43be0f4d84d0161d5b5986e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.235
+      objectReference: {fileID: 0}
+    - target: {fileID: 8574441171922084418, guid: aade22bcc43be0f4d84d0161d5b5986e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.16
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aade22bcc43be0f4d84d0161d5b5986e, type: 3}

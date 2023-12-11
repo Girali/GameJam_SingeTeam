@@ -50,6 +50,7 @@ MonoBehaviour:
   acceleration: 0.01
   _speed: 15
   _rotationSpeed: 120
+  lateralRotation: 5
   left: {fileID: 2164708838630897952}
   right: {fileID: 2164708838438435138}
   steeringLimit: {x: -40, y: 40}
@@ -121,6 +122,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7961594531984050146}
     m_Modifications:
+    - target: {fileID: 1777740836, guid: 87df60be7ff73284283aeb9f1bc620fa, type: 3}
+      propertyPath: m_SidewaysFriction.m_Stiffness
+      value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 2081254470, guid: 87df60be7ff73284283aeb9f1bc620fa, type: 3}
+      propertyPath: m_SidewaysFriction.m_Stiffness
+      value: 0.15
+      objectReference: {fileID: 0}
     - target: {fileID: 2498667462111392762, guid: 87df60be7ff73284283aeb9f1bc620fa, type: 3}
       propertyPath: OnEnterInCarEnd.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

@@ -45,6 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a2f160d4f8d55b4683d7b185a80fc92, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  OnLooted:
+    m_PersistentCalls:
+      m_Calls: []
   visuals: {fileID: 8083365559689685460}
   lootVFX: {fileID: 5944151090932170298, guid: f5f47b3c6bb0511458abdb3fb970f6ab, type: 3}
 --- !u!135 &3647633077055076657
@@ -58,7 +61,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &8082660168046847266
 PrefabInstance:

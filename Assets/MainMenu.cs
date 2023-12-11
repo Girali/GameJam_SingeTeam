@@ -54,6 +54,13 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(s);
     }
 
+    public void Tuto()
+    {
+        MainAudioSourceFader.Instance.Stop();
+        GUI_Controller.Instance.FadeIn();
+        GUI_Controller.Instance.fadeInCallbackEvent += LoadTuto;
+    }
+    
     public void LoadTuto()
     {
         SceneManager.LoadScene("Tutorial");
